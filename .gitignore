@@ -42,4 +42,8 @@ sitemap-*.xml
 
 # generated files
 src/lib/runtime.ts
+src/lib/version.ts
 public/manifest.json
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
