@@ -18,7 +18,7 @@ import { DoubanItem } from '@/lib/types';
 import CapsuleSwitch from '@/components/CapsuleSwitch';
 import ContentRow from '@/components/ContentRow';
 import ContinueWatching from '@/components/ContinueWatching';
-import HeroBillboard from '@/components/HeroBillboard';
+import HeroCarousel from '@/components/HeroCarousel';
 import PageLayout from '@/components/PageLayout';
 import ShimmerCard from '@/components/ShimmerCard';
 import { useSite } from '@/components/SiteProvider';
@@ -162,16 +162,31 @@ function HomeClient() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Hero Billboard - Only show on home tab */}
-        {activeTab === 'home' && !loading && hotMovies.length > 0 && (
-          <HeroBillboard
-            title={hotMovies[0].title}
-            poster={hotMovies[0].poster}
-            year={hotMovies[0].year}
-            rate={hotMovies[0].rate}
-            douban_id={hotMovies[0].id}
-          />
-        )}
+        {/* Hero Carousel - Only show on home tab */}
+        {activeTab === 'home' &&
+          (loading ? (
+            <div className='relative w-full h-[50vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden rounded-2xl mb-8 shadow-2xl bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse'>
+              <div className='absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent' />
+              <div className='relative h-full flex items-center px-4 sm:px-10 lg:px-16'>
+                <div className='max-w-2xl space-y-4 sm:space-y-6 w-full'>
+                  <div className='h-8 w-32 bg-gray-300 dark:bg-gray-600 rounded-full' />
+                  <div className='h-16 sm:h-24 lg:h-32 w-3/4 bg-gray-300 dark:bg-gray-600 rounded-lg' />
+                  <div className='flex gap-3'>
+                    <div className='h-10 w-24 bg-gray-300 dark:bg-gray-600 rounded-lg' />
+                    <div className='h-10 w-24 bg-gray-300 dark:bg-gray-600 rounded-lg' />
+                  </div>
+                  <div className='flex gap-3'>
+                    <div className='h-12 w-32 bg-gray-300 dark:bg-gray-600 rounded-xl' />
+                    <div className='h-12 w-32 bg-gray-300 dark:bg-gray-600 rounded-xl' />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            hotMovies.length > 0 && (
+              <HeroCarousel items={hotMovies.slice(0, 5)} />
+            )
+          ))}
 
         <div className='px-2 sm:px-10 py-4 sm:py-8 overflow-visible'>
           {/* 顶部 Tab 切换 */}
