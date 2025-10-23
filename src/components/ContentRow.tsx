@@ -58,9 +58,10 @@ export default function ContentRow({
     >
       <motion.div
         variants={itemVariants}
-        className='mb-4 flex items-center justify-between'
+        className='mb-4 flex items-center justify-between px-2'
       >
-        <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200 transition-colors duration-300'>
+        <h2 className='text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200 transition-colors duration-300 flex items-center gap-2'>
+          <span className='inline-block w-1 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full'></span>
           {title}
         </h2>
         <div className='flex items-center gap-4'>
@@ -68,7 +69,7 @@ export default function ContentRow({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className='text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200'
+              className='text-sm text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors duration-200 font-medium'
               onClick={onClearClick}
             >
               清空
@@ -77,7 +78,7 @@ export default function ContentRow({
           {href && (
             <Link
               href={href}
-              className='flex items-center text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200 group'
+              className='flex items-center text-sm text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400 transition-colors duration-200 group font-medium'
             >
               <span>查看更多</span>
               <motion.div
