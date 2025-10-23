@@ -81,7 +81,7 @@ export default function HeroCarousel({
       initial={{ opacity: 0 }}
       animate={{ opacity: isLoaded ? 1 : 0 }}
       transition={{ duration: 0.8 }}
-      className='relative w-full h-[50vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden rounded-2xl mb-8 shadow-2xl group'
+      className='relative w-full h-[45vh] sm:h-[55vh] lg:h-[60vh] overflow-hidden rounded-2xl mb-12 shadow-2xl group'
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -109,8 +109,8 @@ export default function HeroCarousel({
             />
             {/* Enhanced Gradient Overlays */}
             <div className='absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-gray-900' />
-            <div className='absolute inset-0 bg-gradient-to-r from-white/95 via-white/60 to-transparent dark:from-gray-900/95 dark:via-gray-900/60' />
-            <div className='absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-white dark:to-gray-900' />
+            <div className='absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent dark:from-gray-900/90 dark:via-gray-900/50' />
+            <div className='absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/80 dark:to-gray-900/80' />
           </div>
 
           {/* Content */}
@@ -206,7 +206,7 @@ export default function HeroCarousel({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             onClick={handlePrevious}
-            className='absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 dark:bg-gray-900/40 dark:hover:bg-gray-900/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 border border-white/30 dark:border-white/20'
+            className='absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 dark:bg-gray-900/40 dark:hover:bg-gray-900/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 border border-white/30 dark:border-white/20 shadow-lg'
           >
             <ChevronLeft className='w-6 h-6 text-white' />
           </motion.button>
@@ -215,7 +215,7 @@ export default function HeroCarousel({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             onClick={handleNext}
-            className='absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 dark:bg-gray-900/40 dark:hover:bg-gray-900/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 border border-white/30 dark:border-white/20'
+            className='absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 dark:bg-gray-900/40 dark:hover:bg-gray-900/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 border border-white/30 dark:border-white/20 shadow-lg'
           >
             <ChevronRight className='w-6 h-6 text-white' />
           </motion.button>
@@ -228,7 +228,7 @@ export default function HeroCarousel({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className='absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2'
+          className='absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/30 backdrop-blur-md px-4 py-2 rounded-full'
         >
           {items.map((_, index) => (
             <button
@@ -239,7 +239,7 @@ export default function HeroCarousel({
               <div
                 className={`h-1.5 transition-all duration-300 rounded-full ${
                   index === currentIndex
-                    ? 'w-8 bg-white'
+                    ? 'w-8 bg-white shadow-md'
                     : 'w-1.5 bg-white/50 group-hover:bg-white/70'
                 }`}
               />
@@ -259,7 +259,7 @@ export default function HeroCarousel({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
-        className='absolute top-6 right-6 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full text-white text-sm font-medium'
+        className='absolute top-6 left-6 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full text-white text-sm font-medium'
       >
         {currentIndex + 1} / {items.length}
       </motion.div>

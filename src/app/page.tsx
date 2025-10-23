@@ -165,7 +165,7 @@ function HomeClient() {
         {/* Hero Carousel - Only show on home tab */}
         {activeTab === 'home' &&
           (loading ? (
-            <div className='relative w-full h-[50vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden rounded-2xl mb-8 shadow-2xl bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse'>
+            <div className='relative w-full h-[45vh] sm:h-[55vh] lg:h-[60vh] overflow-hidden rounded-2xl mb-12 shadow-2xl bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse'>
               <div className='absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent' />
               <div className='relative h-full flex items-center px-4 sm:px-10 lg:px-16'>
                 <div className='max-w-2xl space-y-4 sm:space-y-6 w-full'>
