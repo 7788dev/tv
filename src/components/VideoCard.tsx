@@ -279,7 +279,7 @@ export default function VideoCard({
     >
       {/* 海报容器 */}
       <motion.div
-        className='relative aspect-[2/3] overflow-hidden rounded-lg shadow-lg group-hover:shadow-2xl transition-shadow duration-300'
+        className='relative aspect-[2/3] overflow-hidden rounded-xl shadow-md group-hover:shadow-2xl transition-all duration-300 ring-1 ring-gray-200/50 dark:ring-gray-700/50 group-hover:ring-green-500/50'
         whileHover={{ scale: 1.02 }}
       >
         {/* 骨架屏 */}

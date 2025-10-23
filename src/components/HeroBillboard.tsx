@@ -66,7 +66,7 @@ export default function HeroBillboard({
       initial={{ opacity: 0 }}
       animate={{ opacity: isLoaded ? 1 : 0 }}
       transition={{ duration: 0.8 }}
-      className='relative w-full h-[50vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden'
+      className='relative w-full h-[50vh] sm:h-[70vh] lg:h-[80vh] overflow-hidden rounded-2xl mb-8 shadow-2xl'
     >
       {/* Background Image */}
       <div className='absolute inset-0'>
@@ -74,15 +74,15 @@ export default function HeroBillboard({
           src={imageUrl}
           alt={title}
           fill
-          className='object-cover'
+          className='object-cover scale-105 transform transition-transform duration-700 hover:scale-110'
           priority
           referrerPolicy='no-referrer'
           onLoad={() => setIsLoaded(true)}
         />
-        {/* Gradient Overlays */}
+        {/* Enhanced Gradient Overlays with stronger contrast */}
         <div className='absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-gray-900' />
-        <div className='absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent dark:from-gray-900/80 dark:via-gray-900/40' />
-        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-gray-900' />
+        <div className='absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent dark:from-gray-900/95 dark:via-gray-900/50' />
+        <div className='absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white dark:to-gray-900' />
       </div>
 
       {/* Content */}
@@ -139,20 +139,24 @@ export default function HeroBillboard({
             transition={{ duration: 0.8, delay: 0.5 }}
             className='flex items-center gap-3 sm:gap-4'
           >
-            <button
+            <motion.button
               onClick={handlePlay}
-              className='flex items-center gap-2 px-4 sm:px-8 py-2 sm:py-3 bg-white hover:bg-white/90 text-gray-900 rounded-md font-semibold transition-all duration-200 hover:scale-105 shadow-lg'
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='flex items-center gap-2 px-4 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl'
             >
               <Play className='w-5 h-5 sm:w-6 sm:h-6' fill='currentColor' />
-              <span className='text-sm sm:text-base lg:text-lg'>播放</span>
-            </button>
-            <button
+              <span className='text-sm sm:text-base lg:text-lg'>立即播放</span>
+            </motion.button>
+            <motion.button
               onClick={handleInfo}
-              className='flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-500/70 hover:bg-gray-500/50 text-white rounded-md font-semibold transition-all duration-200 hover:scale-105 backdrop-blur-sm shadow-lg'
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/20 hover:bg-white/30 text-white rounded-lg font-semibold transition-all duration-200 backdrop-blur-md shadow-lg hover:shadow-xl border border-white/30'
             >
               <Info className='w-5 h-5 sm:w-6 sm:h-6' />
               <span className='text-sm sm:text-base lg:text-lg'>更多信息</span>
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>

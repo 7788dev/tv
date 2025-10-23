@@ -181,14 +181,18 @@ function HomeClient() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className='mb-8 flex justify-center'
           >
-            <CapsuleSwitch
-              options={[
-                { label: '首页', value: 'home' },
-                { label: '收藏夹', value: 'favorites' },
-              ]}
-              active={activeTab}
-              onChange={(value) => setActiveTab(value as 'home' | 'favorites')}
-            />
+            <div className='bg-white/60 dark:bg-gray-800/40 rounded-2xl p-1.5 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-sm shadow-lg'>
+              <CapsuleSwitch
+                options={[
+                  { label: '首页', value: 'home' },
+                  { label: '收藏夹', value: 'favorites' },
+                ]}
+                active={activeTab}
+                onChange={(value) =>
+                  setActiveTab(value as 'home' | 'favorites')
+                }
+              />
+            </div>
           </motion.div>
 
           <div className='max-w-[95%] mx-auto'>
@@ -200,21 +204,31 @@ function HomeClient() {
                 transition={{ duration: 0.5 }}
                 className='mb-8'
               >
-                <div className='mb-4 flex items-center justify-between'>
-                  <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
-                    我的收藏
-                  </h2>
+                <div className='mb-6 flex items-center justify-between bg-white/60 dark:bg-gray-800/40 rounded-2xl p-4 border border-gray-200/30 dark:border-gray-700/30 backdrop-blur-sm shadow-lg'>
+                  <div>
+                    <h2 className='text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2'>
+                      <span className='inline-block w-1 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full'></span>
+                      我的收藏
+                    </h2>
+                    {favoriteItems.length > 0 && (
+                      <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
+                        共 {favoriteItems.length} 个收藏
+                      </p>
+                    )}
+                  </div>
                   {favoriteItems.length > 0 && (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className='text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors'
+                      className='px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 rounded-lg transition-colors font-medium shadow-md'
                       onClick={async () => {
-                        await clearAllFavorites();
-                        setFavoriteItems([]);
+                        if (confirm('确定要清空所有收藏吗？此操作不可恢复。')) {
+                          await clearAllFavorites();
+                          setFavoriteItems([]);
+                        }
                       }}
                     >
-                      清空
+                      清空全部
                     </motion.button>
                   )}
                 </div>
@@ -245,9 +259,39 @@ function HomeClient() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.3 }}
-                      className='col-span-full text-center text-gray-500 py-8 dark:text-gray-400'
+                      className='col-span-full'
                     >
-                      暂无收藏内容
+                      <div className='flex flex-col items-center justify-center py-16 text-center'>
+                        <div className='w-24 h-24 mb-6 rounded-full bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 flex items-center justify-center'>
+                          <svg
+                            className='w-12 h-12 text-green-500'
+                            fill='none'
+                            stroke='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth={2}
+                              d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+                            />
+                          </svg>
+                        </div>
+                        <h3 className='text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2'>
+                          还没有收藏内容
+                        </h3>
+                        <p className='text-gray-500 dark:text-gray-400 mb-6 max-w-md'>
+                          浏览首页或搜索你喜欢的影视作品，点击爱心图标即可添加到收藏夹
+                        </p>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => setActiveTab('home')}
+                          className='px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg font-medium shadow-lg transition-all'
+                        >
+                          去首页看看
+                        </motion.button>
+                      </div>
                     </motion.div>
                   )}
                 </motion.div>
